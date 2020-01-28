@@ -26,6 +26,8 @@ git pull # pour chaque update
 ```
 git clone https://bitbucket.org/whitewand/2su_2020/
 cd 2su_2020
+git config -e # ***modifier pour rajouter votre propre github***
+# faire vos modifs
 git status # voir ce qui a change
 git add * # tout rajouter ou mettre le nom du fichier(s)
 git commit -m "message"
