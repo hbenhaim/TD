@@ -26,7 +26,15 @@ https://www.youtube.com/watch?v=FktI4qSjzaE
 
 ## Twitter
 
+https://twitter.com/ghidraninja
+
 ## Reddit
+
+https://www.reddit.com/r/securityCTF/
+
+## Github
+
+https://github.com/Riscure/Rhme-2016
 
 ## Youtube
 
