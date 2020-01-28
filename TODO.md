@@ -66,6 +66,8 @@ Comment peut-on s'en protéger?
 
 Ecrivez un fuzzer (script) sur la base du TD1 qui va modifier bit par bit le binaire jusqu'à obtenir un OK avec un mauvais mot de passe
 
+Faire sur le range de la fonction is_valid si trop lent
+
 # TD5 \[Exploit\]
 
 Montrer ce qu'il est possible de faire avec la vulnérabilité [DirtyCow](https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs)
@@ -74,9 +76,38 @@ Montrer ce qu'il est possible de faire avec la vulnérabilité [DirtyCow](https:
 
 Créer un POC montrant une timing attack sur un password par exemple
 
+En quoi les timings attacks peuvent poser des problèmes en embarqué?
+
 # TD7 \[CTF\]
 
-Faire un writeup des premiers levels de [Microcorruption](https://microcorruption.com/login)
+Faire un writeup des premiers levels (3) de [Microcorruption](https://microcorruption.com/login)
 
+# TD8 \[Compilation\]
 
+Montrer l'effet des options de compilation sur le code
+
+Compilez les différentes formes de code (if/switch, for/while) avec des options de compilation différentes -O2 -O3
+
+En quoi ce peut être problématique pour la sécurité?
+
+Comment est ce que je peux modifier l'assembleur des formes de code (if/switch, for/while) pour obtenir un comportement intéressant pour l'attaquant. Expliquez le gain.
+
+# TD9 \[Crypto\]
+
+Créer une signature d'un fichier avec OpenSSL
+
+https://stackoverflow.com/questions/10782826/digital-signature-for-a-file-using-openssl
+
+En quoi la signature peut protéger dans un contexte embarqué?
+
+Comment protéger l'update d'un firmware?
+
+# TD10 \[Tools\]
+
+Jouer avec les outils suivants:
+- [z3](https://yurichev.com/writings/SAT_SMT_by_example.pdf)
+- [angr](https://docs.angr.io/examples)
+- [afl](https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/)
+
+Comment est ce que je peux utiliser ces outils en tant que défenseur?
 
