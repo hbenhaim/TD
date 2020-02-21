@@ -41,7 +41,8 @@ Lançons le programme avec le mot de passe correct, c'est-à-dire «insa_2su»:
 
 Il y a une possibilité de débordement de tampon dans ce programme. La fonction gets() ne vérifie pas les limites du tableau et peut même écrire une chaîne de longueur supérieure à la taille du tampon dans lequel la chaîne est écrite. Maintenant, on peut même imaginer ce que peut faire un attaquant avec ce genre d'échappatoire?
 
-Voici un exemple : 
+Voici un exemple :   
+
 ![screen 2](https://github.com/hbenhaim/TD/blob/master/Rendue/TD3/screen/22.png)
 
 Il y a une logique derrière la sortie ci-dessus. Ce que l’attaquant a fait, c’est qu’il a fourni une entrée de longueur supérieure à ce que le tampon peut contenir et à une longueur d’entrée particulière, le débordement de tampon a donc eu lieu qu’il a écrasé la mémoire de l’entier «passe». Ainsi, malgré un mot de passe incorrect, la valeur de «pass» est devenue non nulle et, par conséquent, les privilèges root ont été accordés à un attaquant.
