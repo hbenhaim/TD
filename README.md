@@ -1,5 +1,7 @@
 # INSA 2SU 2020
 
+### 1- Quels sont les chemins d'attaque possibles sur la signature d'un système embarqué?
+
 ### 2/- A quoi sert la chaîne de confiance? Pourquoi est-elle nécessaire?
 
 Le concept de chaîne de confiance prend tout son sens dans l’implémentation de secure boot connus sous le nom de Trusted boot ou verified boot. Ils permettent de valider de façon cryptographique et à partir d’une root of trust matérielle chaque composant que le système charge quand il commence à exécuter du code. 
