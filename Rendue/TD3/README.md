@@ -7,39 +7,42 @@ Le principe du buffer overflow est de faire exécuter un code malveillant à un 
 #include <stdio.h>
 #include <string.h>
 
-void foo(char* string);
+int main(void)
+{
+    char buff[15];
+    int pass = 0;
 
-int main(int argc, char** argv) {
-  if (argc > 1)
-    foo(argv[1]);
+    printf("\n Enter the password : \n");
+    gets(buff);
 
-  return 0;
+    if(strcmp(buff, "thegeekstuff"))
+    {
+        printf ("\n Wrong Password \n");
+    }
+    else
+    {
+        printf ("\n Correct Password \n");
+        pass = 1;
+    }
+
+    if(pass)
+    {
+       /* Now Give root or admin rights to user*/
+        printf ("\n Root privileges given to the user \n");
+    }
+
+    return 0;
 }
-
-void foo(char* string) {
-  char buffer[256];
-  strcpy(buffer, string);
-}
 ```
-Si nous désassemblons la fonction foo, nous pouvons constater grâce au prologue de la fonction :
+Le programme ci-dessus simule un scénario dans lequel un programme attend un mot de passe de l'utilisateur et si le mot de passe est correct, il accorde des privilèges root à l'utilisateur.
 
-```
-push   %ebp
-mov    %esp,%ebp
-sub    $0x108,%esp ; 0x108 = 264
-```
-le compilateur alloue 264 bytes pour notre buffer de 256 bytes. On peut donc extrapoler la partie du cadre de la fonction qui va nous intéresser.
-![screen 1](https://github.com/hbenhaim/TD/blob/master/Rendue/TD3/screen/11.png)
+Lançons le programme avec le mot de passe correct, c'est-à-dire «insa_2su»:
+![screen 1](https://github.com/hbenhaim/TD/blob/master/Rendue/TD3/screen/21.png)
 
-Pour appliquer le principe défini en début de section, nous allons dépasser les 264 bytes alloués à notre buffer jusqu'à écraser la sauvegarde du registre %eip de la fonction appelante de telle manière que, lorsque l'instruction ret sera exécutée, le programme sera redirigé vers notre code malveillant. 
+Il y a une possibilité de débordement de tampon dans ce programme. La fonction gets() ne vérifie pas les limites du tableau et peut même écrire une chaîne de longueur supérieure à la taille du tampon dans lequel la chaîne est écrite. Maintenant, on peut même imaginer ce que peut faire un attaquant avec ce genre d'échappatoire?
 
-Voyons ce qui se passe si nous dépassons notre buffer et que nous écrasons la sauvegarde du registre %ebp de la fonction appelante en injectant 268 caractères dans notre buffer.
-![scren 2](https://github.com/hbenhaim/TD/blob/master/Rendue/TD3/screen/12.png)
+Voici un exemple : 
+![screen 2](https://github.com/hbenhaim/TD/blob/master/Rendue/TD3/screen/22.png)
 
-Après analyse du fichier core à l'aide de l'utilitaire gdb, nous pouvons observer qu'une erreur de segmentation s'est produite à l'instruction d'adresse 0x00007fe6e4e6d428.
-
-Maintenant, nous allons aller encore plus loin en écrasant la sauvegarde du registre %eip de la fonction appelante de la manière suivante :
-![screen 4](https://github.com/hbenhaim/TD/blob/master/Rendue/TD3/screen/15.png)
-
-
+Il y a une logique derrière la sortie ci-dessus. Ce que l’attaquant a fait, c’est qu’il a fourni une entrée de longueur supérieure à ce que le tampon peut contenir et à une longueur d’entrée particulière, le débordement de tampon a donc eu lieu qu’il a écrasé la mémoire de l’entier «passe». Ainsi, malgré un mot de passe incorrect, la valeur de «pass» est devenue non nulle et, par conséquent, les privilèges root ont été accordés à un attaquant.
 
