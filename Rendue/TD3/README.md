@@ -23,8 +23,8 @@ void foo(char* string) {
 ```
 Si nous désassemblons la fonction foo1.3, nous pouvons constater grâce au prologue de la fonction :
 
-`
+```
 push   %ebp
 mov    %esp,%ebp
 sub    $0x108,%esp ; 0x108 = 264
-`
+```
