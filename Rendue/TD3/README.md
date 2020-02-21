@@ -1,7 +1,7 @@
 
 # Buffer Overflow 
 
-Le principe du buffer overflow est de faire exécuter un code malveillant à un programme. Pour mieux comprendre comment faire, prenons comme exemple le programme suivant :
+Le principe du buffer overflow est de faire exécuter un code malveillant à un programme. Pour mieux comprendre comment faire, prenons comme exemple le programme suivant :  
  
 ```
 #include <stdio.h>
@@ -21,3 +21,10 @@ void foo(char* string) {
   strcpy(buffer, string);
 }
 ```
+Si nous désassemblons la fonction foo1.3, nous pouvons constater grâce au prologue de la fonction :
+
+`
+push   %ebp
+mov    %esp,%ebp
+sub    $0x108,%esp ; 0x108 = 264
+`
