@@ -21,10 +21,11 @@ void foo(char* string) {
   strcpy(buffer, string);
 }
 ```
-Si nous désassemblons la fonction foo1.3, nous pouvons constater grâce au prologue de la fonction :
+Si nous désassemblons la fonction foo, nous pouvons constater grâce au prologue de la fonction :
 
 ```
 push   %ebp
 mov    %esp,%ebp
 sub    $0x108,%esp ; 0x108 = 264
 ```
+le compilateur alloue 264 bytes pour notre buffer de 256 bytes. On peut donc extrapoler la partie du cadre de la fonction qui va nous intéresser.
