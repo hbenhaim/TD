@@ -47,3 +47,8 @@ Voici un exemple :
 
 Il y a une logique derrière la sortie ci-dessus. Ce que l’attaquant a fait, c’est qu’il a fourni une entrée de longueur supérieure à ce que le tampon peut contenir et à une longueur d’entrée particulière, le débordement de tampon a donc eu lieu qu’il a écrasé la mémoire de l’entier «passe». Ainsi, malgré un mot de passe incorrect, la valeur de «pass» est devenue non nulle et, par conséquent, les privilèges root ont été accordés à un attaquant.
 
+### Comment se protéger du Buffer Overflow
+Lors du développement essayer d'utiliser malloc/free le plus possible, utiliser les fonctions n comme strncpy pour vérifier les limites par exemple , utilisation de librairies de développement spécialisée contre les buffers overflow (comme la défunte Libsafe d'Avayalabs).
+Utiliser un langage n'autorisant pas ce type d'attaques : `Java`, `Cyclone` (qui est issu du C).
+Utiliser des logiciels spécialisés dans la vérification de code source, comme par exemple `Qaudit` ou `Flawfinder`.
+Auditer le programme compilé à l'aide d'outils tels que `BFBTester`.
