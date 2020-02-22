@@ -21,22 +21,7 @@ Prenant l’exemple d’une cible ARM, il existe un projet  DAPLink(un projet d'
 
 ### 5-  Lister les catégories de bug possibles et comment les exploiter et les défendre ?
 
-Parmi les bugs possibles on trouve :
-- Dump / injection de commande : 
-Une injection de commande est une classe de vulnérabilités où l'attaquant peut contrôler une ou plusieurs commandes en cours d'exécution sur un système. 
-Afin d'empêcher un attaquant d'exploiter une application web vulnérable et d'insérer des caractères spéciaux dans la commande du système d'exploitation, on doit généralement éviter les appels système dans la mesure du possible. En toutes circonstances, évitez toute intervention de l'utilisateur, sauf si cela est absolument nécessaire. 
 
-- Elévation de privilèges ( Get root) :
-On utilise cette vulnérabilité pour gagner des accès hauts dans le système, un pirate ou un utilisateur pourra modifier la configuration système ou implanter une backdoor.
-Il y a trois remèdes simples pour réduire les attaques d'escalade : 
-  - Faites en sorte que vos utilisateurs ou clients utilisent la meilleure méthode d'authentification possible.
-  - Scannez vos applications Web pour identifier les vulnérabilités connues afin de minimiser les attaques par exploit.
-  - Validez les données dans tous les formulaires de soumission utilisés sur votre site web. 
-
-- Security bypass : 
-
-- Shellcode (prise de contrôle) : 
-Est un petit morceau de code utilisé comme charge utile dans l'exploitation d'un logiciel de vulnérabilité . Elle est appelée « shellcode » parce qu'il commence généralement un shell de commande à partir de laquelle l'attaquant peut contrôler la machine compromise.
 
 ### 6- Quelles idées pour améliorer la sécurité en embarqué? (IA, Anti-debug, Obfuscation, Crypto ...) Choisissez une idée, chercher si elle existe et développer en quelques phrases quel avantage elle apporte et ses limites :
 
